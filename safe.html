@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Giao dịch an toàn – Chợ Vui</title><meta name="description" content="Quy định giao dịch của Chợ Vui và những điều cần nhớ khi mua bán đồ cũ sinh viên."><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"><link rel="stylesheet" href="/css/app.css"><link rel="stylesheet" href="/css/pages.css"><link rel="stylesheet" href="/css/more.css"><script id="wix-site-script" src="https://manage.wix.com/_api/headless-business-setup/v1/headless-business/site-script.js" data-client-id="25baaef8-1a6a-4740-84be-75ab2af6011e" async></script></head>
+<body><header id="hdr"></header>
+<main class="wrap">
+  <div class="page-h"><h1>Giao dịch an toàn</h1></div>
+  <div class="panel prose">
+    <h2>5 điều cần nhớ khi giao dịch</h2>
+    <ul class="ck" id="rules"></ul>
+    <h2>Vì sao mọi tin đều được duyệt?</h2>
+    <p>Admin kiểm tra ảnh, mô tả, giá và danh mục trước khi tin hiển thị. Tin giả, trùng lặp, hàng cấm hoặc mô tả sai bị từ chối. Phí 1.500đ mỗi tin để chặn spam, không phải để kiếm lời.</p>
+    <h2>Chợ Vui không giữ tiền</h2>
+    <p>Hai bên trả tiền trực tiếp khi gặp. Người mua kiểm hàng trước, hài lòng mới trả tiền và đưa mã bàn giao 4 số cho người bán. Sau đó hai bên đánh giá nhau.</p>
+    <h2>Khi gặp vấn đề</h2>
+    <p>Bấm "Báo cáo tin đăng" trên trang chi tiết. Tài khoản bị báo cáo nhiều lần sẽ bị khóa.</p>
+  </div>
+</main>
+<footer id="foot"></footer><nav id="bnav"></nav>
+<script type="module">
+import { shell, esc, icon } from "/js/app.js";
+shell("safe");
+const rules = ["Hẹn gặp ở nơi đông người trong trường", "Kiểm tra hàng trước khi nhận", "Không chuyển khoản trước cho người lạ", "Ưu tiên giao dịch qua Kệ Chợ Vui", "Báo cáo tin đăng đáng ngờ"];
+document.getElementById("rules").innerHTML = rules.map((r) => "<li>" + icon("check") + esc(r) + "</li>").join("");
+</script>
+</body></html>

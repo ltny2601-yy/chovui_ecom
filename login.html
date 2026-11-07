@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Đăng nhập – Chợ Vui</title>
+<link rel="icon" href="/favicon.svg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap">
+<link rel="stylesheet" href="/css/app.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="/css/more.css">
+<style>
+.req{color:var(--hong)}
+.ferr{color:var(--bad);font-size:12.5px;min-height:0}
+.ferr:empty{display:none}
+.input[aria-invalid="true"]{border-color:var(--bad)}
+.seg.sm button{padding:7px;font-size:14px}
+.cb a{color:var(--hong)}
+</style>
+<script id="wix-site-script" src="https://manage.wix.com/_api/headless-business-setup/v1/headless-business/site-script.js" data-client-id="25baaef8-1a6a-4740-84be-75ab2af6011e" async></script></head>
+<body>
+<header id="hdr"></header>
+<main class="wrap">
+  <div class="auth panel">
+    <div class="seg" role="tablist" id="mainSeg"><button type="button" role="tab" data-tab="in" aria-selected="true">Đăng nhập</button><button type="button" role="tab" data-tab="up" aria-selected="false">Đăng ký</button></div>
+
+    <div class="notice" id="resetDone" hidden><b>Đã đổi mật khẩu</b>Bạn đăng nhập lại bằng mật khẩu mới nhé.</div>
+
+    <form id="fIn" novalidate>
+      <h1>Chào bạn quay lại</h1>
+      <div class="field"><label for="inEmail">Email</label><input class="input" id="inEmail" name="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="inPass">Mật khẩu</label><input class="input" id="inPass" name="password" type="password" autocomplete="current-password" required></div>
+      <p class="err" data-err></p>
+      <button class="btn primary block" type="submit">Đăng nhập</button>
+      <button class="link" type="button" data-forgot>Quên mật khẩu?</button>
+    </form>
+
+    <form id="fUp" novalidate hidden>
+      <h1>Tạo tài khoản Chợ Vui</h1>
+      <p class="muted small">Tất cả các mục đều bắt buộc. Mỗi tài khoản vừa mua vừa bán được.</p>
+      <div class="field"><label for="upName">Họ và tên <span class="req">*</span></label><input class="input" id="upName" name="name" autocomplete="name" placeholder="VD: Nguyễn Văn An"><small class="ferr" id="e-upName"></small></div>
+      <div class="field"><label for="upPhone">Số điện thoại <span class="req">*</span></label><input class="input" id="upPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="VD: 0912345678"><small class="ferr" id="e-upPhone"></small></div>
+      <div class="grid2">
+        <div class="field"><label for="upArea">Khu vực <span class="req">*</span></label><select class="input" id="upArea" name="area"><option value="">Chọn khu vực</option></select><small class="ferr" id="e-upArea"></small></div>
+        <div class="field"><label for="upUni">Trường <span class="req">*</span></label><select class="input" id="upUni" name="uni"><option value="">Chọn trường</option></select><small class="ferr" id="e-upUni"></small></div>
+      </div>
+      <div class="field"><label for="upEmail">Email <span class="req">*</span></label><input class="input" id="upEmail" name="email" type="email" autocomplete="email" placeholder="ban@gmail.com"><small class="ferr" id="e-upEmail"></small></div>
+      <div class="field"><label for="upPass">Mật khẩu <span class="req">*</span></label><input class="input" id="upPass" name="password" type="password" autocomplete="new-password" placeholder="Ít nhất 8 ký tự, có cả chữ và số"><small class="ferr" id="e-upPass"></small></div>
+      <div class="field"><label for="upPass2">Nhập lại mật khẩu <span class="req">*</span></label><input class="input" id="upPass2" name="password2" type="password" autocomplete="new-password"><small class="ferr" id="e-upPass2"></small></div>
+      <label class="cb"><input type="checkbox" id="upAgree" name="agree"> Tôi đồng ý với <a href="/safe.html" target="_blank">quy định giao dịch của Chợ Vui</a> <span class="req">*</span></label><small class="ferr" id="e-upAgree"></small>
+      <p class="err" data-err></p>
+      <button class="btn primary block" type="submit">Tạo tài khoản</button>
+    </form>
+
+    <form id="fCode" novalidate hidden>
+      <h1>Xác thực email</h1>
+      <p class="muted">Nhập mã vừa được gửi tới email của bạn.</p>
+      <div class="field"><label for="code">Mã xác thực</label><input class="input" id="code" name="code" inputmode="numeric" required></div>
+      <p class="err" data-err></p>
+      <button class="btn primary block" type="submit">Xác thực</button>
+    </form>
+
+    <div id="forgot" hidden>
+      <h1>Quên mật khẩu</h1>
+      <p class="muted small">Chọn cách lấy lại tài khoản.</p>
+      <div class="seg sm" role="tablist" id="fgSeg" style="margin:10px 0 14px"><button type="button" data-fg="email" aria-selected="true">Qua email</button><button type="button" data-fg="phone" aria-selected="false">Qua số điện thoại</button></div>
+      <form id="fFgEmail" novalidate>
+        <div class="field"><label for="fgEmail">Email đã đăng ký</label><input class="input" id="fgEmail" type="email" autocomplete="email"></div>
+        <p class="err" data-err></p>
+        <button class="btn primary block" type="submit">Gửi link đặt lại mật khẩu</button>
+      </form>
+      <form id="fFgPhone" novalidate hidden>
+        <p class="small">Admin sẽ gọi vào số này để xác minh, rồi gửi link đặt lại mật khẩu tới email của bạn.</p>
+        <div class="field"><label for="fgName">Họ và tên</label><input class="input" id="fgName" autocomplete="name"></div>
+        <div class="field"><label for="fgPhone">Số điện thoại đã đăng ký</label><input class="input" id="fgPhone" type="tel" inputmode="tel" autocomplete="tel"></div>
+        <p class="err" data-err></p>
+        <button class="btn primary block" type="submit">Gửi yêu cầu cho admin</button>
+      </form>
+      <div class="notice" id="fgDone" hidden></div>
+      <button class="link" type="button" data-back style="margin-top:12px">← Quay lại đăng nhập</button>
+    </div>
+
+    <div class="notice warn" id="approval" hidden><b>Tài khoản đang chờ duyệt</b>Admin sẽ duyệt tài khoản của bạn sớm. Bạn sẽ đăng nhập được sau khi được duyệt.</div>
+  </div>
+</main>
+<nav id="bnav"></nav>
+<script type="module" src="/js/login.js"></script>
+</body>
+</html>

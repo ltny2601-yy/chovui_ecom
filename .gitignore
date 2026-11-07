@@ -1,0 +1,9 @@
+# Hệ điều hành và trình soạn thảo
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Thư mục cài đặt nếu ai đó dùng npx serve
+node_modules/

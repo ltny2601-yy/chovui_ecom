@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Tin tìm đồ – Chợ Vui</title><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"><link rel="stylesheet" href="/css/app.css"><link rel="stylesheet" href="/css/pages.css"><link rel="stylesheet" href="/css/more.css"><script id="wix-site-script" src="https://manage.wix.com/_api/headless-business-setup/v1/headless-business/site-script.js" data-client-id="25baaef8-1a6a-4740-84be-75ab2af6011e" async></script></head>
+<body><header id="hdr"></header>
+<main class="wrap"><div class="page-h"><h1>Tin đang "Tìm đồ"</h1></div>
+<div class="banner" style="margin-bottom:16px"><div><b>Bạn có món các bạn này cần?</b><span>Đăng tin bán, người tìm đồ sẽ thấy món khớp trong trang cá nhân.</span></div><a class="btn primary sm" href="/post.html?mode=want">+ Đăng tin tìm đồ</a></div>
+<div class="list" id="list"></div></main>
+<footer id="foot"></footer><nav id="bnav"></nav>
+<script type="module">
+import { shell, queryItems, universities, uniName, esc, vnd, icon, catOf } from "/js/app.js";
+shell("search");
+const unis = await universities();
+const r = await queryItems("WantAds", { filters: [{ field: "status", op: "eq", value: "open" }], sort: [{ field: "_createdDate", direction: "desc" }], limit: 50 }).catch(() => ({ items: [] }));
+document.getElementById("list").innerHTML = r.items.map((w) => '<div class="li"><span class="sq t-yellow">' + icon("search") + '</span><div class="body"><b>' + esc(w.title) + '</b><span class="small muted">' + esc(w.posterName) + " · " + esc(uniName(w.university, unis)) + " · " + esc(catOf(w.category).name) + " · Ngân sách " + (w.budget ? vnd(w.budget) : "linh hoạt") + '</span></div><a class="btn soft sm" href="/post.html">Tôi có món này</a></div>').join("") || '<div class="empty">Chưa có tin tìm đồ nào.</div>';
+</script>
+</body></html>

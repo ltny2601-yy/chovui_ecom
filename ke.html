@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Kệ Chợ Vui – Chợ Vui</title><meta name="description" content="Kệ Chợ Vui: gửi đồ tại kệ trong trường, được kiểm tra khi nhận, người mua tới lấy không cần hẹn."><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"><link rel="stylesheet" href="/css/app.css"><link rel="stylesheet" href="/css/pages.css"><link rel="stylesheet" href="/css/more.css"><script id="wix-site-script" src="https://manage.wix.com/_api/headless-business-setup/v1/headless-business/site-script.js" data-client-id="25baaef8-1a6a-4740-84be-75ab2af6011e" async></script></head>
+<body><header id="hdr"></header>
+<main class="wrap">
+  <section class="hero" style="background:var(--bacha)"><div><h1>Kệ Chợ Vui</h1><p>Điểm ký gửi nhỏ ngay trong trường. Bạn mang đồ tới kệ, team kiểm tra khi nhận, đồ lên web với nhãn "Có sẵn tại Kệ". Người mua đặt online rồi tới lấy, không cần hẹn gặp ai.</p><div class="row"><a class="btn primary" href="/post.html">Gửi đồ lên Kệ</a><a class="btn line" href="/search.html">Xem đồ trên Kệ</a></div></div>
+  <div class="hero-art" style="background:var(--white)" aria-hidden="true"><svg viewBox="0 0 400 260" fill="none" stroke="#3F3A5E" stroke-width="4" stroke-linejoin="round"><rect x="60" y="30" width="280" height="200" rx="14" fill="#FFF9F4"/><path d="M60 100h280M60 165h280"/><rect x="90" y="55" width="60" height="45" rx="6" fill="#FFF0B3"/><rect x="165" y="65" width="40" height="35" rx="6" fill="#D6E9FB"/><rect x="230" y="50" width="80" height="50" rx="6" fill="#FFD6E0"/><rect x="95" y="120" width="90" height="45" rx="6" fill="#CDEFE0"/><rect x="210" y="115" width="50" height="50" rx="6" fill="#E3DAFB"/></svg></div></section>
+  <section class="sec"><div class="sec-h"><h2>Kệ là gì?</h2></div>
+    <div class="steps"><div class="step"><div class="n">1</div><h3>Gửi đồ</h3><p>Mang đồ tới Kệ trong giờ nhận hàng, đăng tin như bình thường và chọn "Gửi tại Kệ".</p></div><div class="step"><div class="n">2</div><h3>Kiểm khi nhận</h3><p>Team kiểm tra tình trạng tại chỗ, tin được gắn nhãn "Có sẵn tại Kệ".</p></div><div class="step"><div class="n">3</div><h3>Người mua tới lấy</h3><p>Người mua giữ hàng online, tới Kệ xem tận tay rồi mới trả tiền.</p></div><div class="step"><div class="n">4</div><h3>Nhận tiền</h3><p>Phí ký gửi 10–15% hoặc tối thiểu 5.000đ, chỉ thu khi bán được.</p></div></div>
+  </section>
+  <section class="sec"><div class="sec-h"><h2>Giờ nhận hàng và địa điểm</h2></div><div class="list" id="meets"></div></section>
+  <section class="sec"><div class="sec-h"><h2>Đang có tại Kệ</h2></div><div class="grid" id="shelf"></div></section>
+</main>
+<footer id="foot"></footer><nav id="bnav"></nav>
+<script type="module">
+import { shell, queryItems, LIVE, card, universities, uniName, esc, icon } from "/js/app.js";
+shell("ke");
+const unis = await universities();
+queryItems("MeetPoints", { limit: 50 }).then((r) => {
+  const ke = r.items.filter((m) => /Kệ/.test(m.name));
+  document.getElementById("meets").innerHTML = (ke.length ? ke : r.items).map((m) => '<div class="li"><span class="sq t-mint">' + icon("pin") + '</span><div class="body"><b>' + esc(m.name) + '</b><span class="small muted">' + esc(uniName(m.university, unis)) + " · " + esc(m.hours) + "</span></div></div>").join("");
+});
+queryItems("Listings", { filters: [LIVE, { field: "onShelf", op: "eq", value: true }], limit: 20 }).then((r) => {
+  document.getElementById("shelf").innerHTML = r.items.map((l) => card(l, unis)).join("") || '<div class="empty">Kệ đang trống.</div>';
+});
+</script>
+</body></html>
